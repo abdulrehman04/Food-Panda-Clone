@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:reasa/constants.dart';
 
 successSnack(msg, {title = "Success"}) {
   return Get.snackbar(
@@ -16,6 +17,42 @@ errorSnack(msg, {title = "Error"}) {
     title,
     msg,
     backgroundColor: Colors.redAccent.withOpacity(0.4),
+  );
+}
+
+textFieldWithTitle(
+  label,
+  controller, {
+  type = TextInputType.text,
+  Color borderColor = kclrPrimaryColor,
+}) {
+  return TextField(
+    decoration: InputDecoration(
+      isDense: true,
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kclrPrimaryColor,
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kclrPrimaryColor,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kclrPrimaryColor,
+        ),
+      ),
+      labelText: label,
+      labelStyle: GoogleFonts.poppins(
+        color: kclrPrimaryColor,
+      ),
+    ),
+    keyboardType: type,
   );
 }
 
@@ -83,23 +120,26 @@ Widget longButton({
   textColor = Colors.black,
   borderColor = Colors.black,
 }) {
-  return Container(
-    height: 40.h,
-    width: double.infinity,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(8),
-      color: color,
-      boxShadow: [boxShad(0, 1, 3)],
-      border: Border.all(
-        color: borderColor,
+  return InkWell(
+    onTap: onTap,
+    child: Container(
+      height: 40.h,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: color,
+        boxShadow: [boxShad(0, 1, 3)],
+        border: Border.all(
+          color: borderColor,
+        ),
       ),
-    ),
-    child: Center(
-      child: poppinsText(
-        title,
-        size: 14.sp,
-        color: textColor,
-        weight: FontWeight.w400,
+      child: Center(
+        child: poppinsText(
+          title,
+          size: 14.sp,
+          color: textColor,
+          weight: FontWeight.w400,
+        ),
       ),
     ),
   );

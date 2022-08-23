@@ -22,6 +22,8 @@ class HomeDrawer extends StatelessWidget {
                 Get.back();
                 auth.showBottomModel(() {
                   auth.googleLogin();
+                }, () {
+                  auth.pushToEmail();
                 });
               },
               child: DrawerHeader(

@@ -6,7 +6,7 @@ import 'package:reasa/constants.dart';
 
 import '../../../widgets.dart';
 
-authBottomSheet(onGoogleClick) {
+authBottomSheet(onGoogleClick, onEmailClick) {
   return Get.bottomSheet(
     Container(
       height: 250.h,
@@ -75,7 +75,7 @@ authBottomSheet(onGoogleClick) {
           ),
           longButton(
             title: "Continue with email",
-            onTap: null,
+            onTap: onEmailClick,
             textColor: kclrPrimaryColor,
             borderColor: kclrPrimaryColor,
           ),
