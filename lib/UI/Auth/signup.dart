@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:reasa/UI/Auth/Auth%20Components/auth_appbar.dart';
-import 'package:reasa/UI/Auth/Auth%20Components/auth_top_icon.dart';
-import 'package:reasa/View%20Models/Auth%20View%20Model/auth_view_model.dart';
-import 'package:reasa/constants.dart';
-import 'package:reasa/widgets.dart';
+import '../../View Models/Auth View Model/auth_view_model.dart';
+import '../../constants.dart';
+import '../../widgets.dart';
+import 'Auth Components/auth_top_icon.dart';
 
-class GetEmail extends StatelessWidget {
-  GetEmail({Key? key}) : super(key: key);
+class Signup extends StatelessWidget {
+  final String email;
+  Signup({Key? key, this.email = ""}) : super(key: key) {
+    print(email);
+    emailController.text = email;
+  }
 
   final auth = Get.find<AuthViewModel>();
   final TextEditingController emailController = TextEditingController();
@@ -25,7 +29,7 @@ class GetEmail extends StatelessWidget {
           children: [
             authTopIcon(
               const Icon(
-                Icons.mail,
+                Icons.person,
                 size: 35,
                 color: kclrPrimaryColor,
               ),
@@ -34,7 +38,7 @@ class GetEmail extends StatelessWidget {
               height: 10.h,
             ),
             poppinsText(
-              "What's your email?",
+              "Let's get you started!",
               size: 19,
               weight: FontWeight.bold,
             ),
@@ -42,7 +46,7 @@ class GetEmail extends StatelessWidget {
               height: 10.h,
             ),
             poppinsText(
-              "We'll check if you have an account",
+              "First, create your foodpanda (Ghurbat Variant) account",
               size: 13,
               weight: FontWeight.w300,
               color: Colors.grey[600],
@@ -50,11 +54,27 @@ class GetEmail extends StatelessWidget {
             SizedBox(
               height: 15.h,
             ),
-            textFieldWithTitle(
-              "Email",
-              emailController,
-              type: TextInputType.emailAddress,
-            )
+            textFieldWithTitle("Email", emailController),
+            SizedBox(
+              height: 15.h,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: textFieldWithTitle("First Name", null),
+                ),
+                SizedBox(
+                  width: 15.w,
+                ),
+                Expanded(
+                  child: textFieldWithTitle("Last Name", null),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
+            textFieldWithTitle("Password", null),
           ],
         ),
       ),
@@ -64,11 +84,7 @@ class GetEmail extends StatelessWidget {
         child: longButton(
           title: "Continue",
           onTap: () {
-            if (emailController.text != "") {
-              auth.getToSignup(email: emailController.text.trim());
-            } else {
-              errorSnack("Please enter email address");
-            }
+            auth.getToSignup();
           },
           color: kclrPrimaryColor,
           textColor: Colors.white,

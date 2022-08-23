@@ -27,6 +27,7 @@ textFieldWithTitle(
   Color borderColor = kclrPrimaryColor,
 }) {
   return TextField(
+    controller: controller,
     decoration: InputDecoration(
       isDense: true,
       focusedBorder: OutlineInputBorder(

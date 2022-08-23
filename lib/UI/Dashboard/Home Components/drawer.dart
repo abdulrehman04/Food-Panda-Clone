@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:reasa/UI/Dashboard/Home%20Components/logged_in_drawer.dart';
+import 'package:reasa/UI/Dashboard/Home%20Components/not_logged_in_drawer.dart';
 
 import '../../../View Models/Auth View Model/auth_view_model.dart';
-import '../../../constants.dart';
-import '../../../widgets.dart';
 
 class HomeDrawer extends StatelessWidget {
   HomeDrawer({Key? key}) : super(key: key);
@@ -13,36 +13,7 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            child: InkWell(
-              onTap: () {
-                Get.back();
-                auth.showBottomModel(() {
-                  auth.googleLogin();
-                }, () {
-                  auth.pushToEmail();
-                });
-              },
-              child: DrawerHeader(
-                decoration: BoxDecoration(
-                  color: kclrPrimaryColor,
-                ),
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: poppinsText(
-                    "Log in / Create account",
-                    color: Colors.white,
-                    weight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
+      child: auth.loggedIn ? loggedInDrawer(auth) : notLoggedInDrawer(auth),
     );
   }
 }
