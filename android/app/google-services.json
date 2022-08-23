@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "876858423781",
+    "project_id": "reasa-b5c94",
+    "storage_bucket": "reasa-b5c94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876858423781:android:195e74f4e1792f443e570c",
+        "android_client_info": {
+          "package_name": "com.karwaan.reasa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876858423781-fr2rsl503ubvkss7h3fbjdb59go7ljch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.karwaan.reasa",
+            "certificate_hash": "acbcb4507984164e6f9bf9f596ec4a03c798810e"
+          }
+        },
+        {
+          "client_id": "876858423781-caek965rcotf4j32kd1vie2v7mip8ctk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMEQlxgQMK8PumltYrE4YmoxnenRI4glE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "876858423781-caek965rcotf4j32kd1vie2v7mip8ctk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "876858423781-3d2s7q9r2lr2ds26do1mtomtkvsaq656.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.karwaan.reasa"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
