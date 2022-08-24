@@ -40,6 +40,8 @@ dependencies:
   flutter_screenutil: ^5.5.3+2
   get:
   google_fonts:
+  geolocator:
+  geocoder:
   font_awesome_flutter:
   google_sign_in:
   
