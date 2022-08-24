@@ -65,7 +65,17 @@ class GetEmail extends StatelessWidget {
           title: "Continue",
           onTap: () {
             if (emailController.text != "") {
-              auth.getToSignup(email: emailController.text.trim());
+              auth.checkIfExists(emailController.text.trim()).then((value) {
+                if (value == 0) {
+                  auth.getToPassword(email: emailController.text.trim());
+                } else if (value == 1) {
+                  errorSnack(
+                    "This email is used on a social login. Please login with Google using the same email",
+                  );
+                } else {
+                  auth.getToSignup(email: emailController.text.trim());
+                }
+              });
             } else {
               errorSnack("Please enter email address");
             }

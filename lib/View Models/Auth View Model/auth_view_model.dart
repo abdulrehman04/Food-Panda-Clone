@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:reasa/Model/user_model.dart';
 import 'package:reasa/UI/Auth/Auth%20Components/auth_bottom_sheet.dart';
 import 'package:reasa/UI/Auth/get_email.dart';
+import 'package:reasa/UI/Auth/get_password.dart';
 import 'package:reasa/UI/Auth/signup.dart';
 import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
@@ -21,7 +22,44 @@ class AuthViewModel extends GetxController {
     Get.to(() => Signup(email: email));
   }
 
+  getToPassword({email = ""}) {
+    Get.to(() => GetPassword(email: email));
+  }
+
+  Future checkIfExists(email) async {
+    var data =
+        await db.collection("Users").where("email", isEqualTo: email).get();
+    if (data.docs.isNotEmpty) {
+      if (data.docs[0]['type'] == 'email') {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else {
+      return 2;
+    }
+  }
+
   get fullName => "${currentUser.firstName} ${currentUser.secondName}";
+
+  Future emailLogin(email, password) async {
+    try {
+      var authUser = await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      var data = await db.collection("Users").doc(authUser.user!.uid).get();
+      setUserData(
+        firstName: data['firstName'],
+        secondName: data['lastName'],
+        email: data['email'],
+        uid: authUser.user!.uid,
+      );
+      return true;
+    } on FirebaseException catch (e) {
+      Future.error(e.message.toString());
+    }
+  }
 
   googleLogin() {
     Get.back();
@@ -55,6 +93,7 @@ class AuthViewModel extends GetxController {
                 names[0],
                 names[1],
                 authUser.user!.uid,
+                "google",
               );
               setUserData(
                 firstName: names[0],
@@ -69,7 +108,40 @@ class AuthViewModel extends GetxController {
     });
   }
 
-  setUserData({firstName, secondName, email, uid}) {
+  logout() {
+    loggedIn = false;
+  }
+
+  Future signupEmail({
+    required email,
+    required password,
+    required first,
+    required last,
+  }) async {
+    try {
+      UserCredential value = await auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      await pushUserToDb(email, first, last, value.user!.uid, 'email');
+      setUserData(
+        firstName: first,
+        secondName: last,
+        email: email,
+        uid: value.user!.uid,
+      );
+      return true;
+    } on FirebaseException catch (e) {
+      return Future.error(e.message.toString());
+    }
+  }
+
+  setUserData({
+    required firstName,
+    required secondName,
+    required email,
+    required uid,
+  }) {
     loggedIn = true;
     currentUser = UserModel(
       firstName: firstName,
@@ -80,11 +152,12 @@ class AuthViewModel extends GetxController {
     successSnack("Logged in as ${currentUser.firstName}");
   }
 
-  Future pushUserToDb(email, first, last, uid) async {
+  Future pushUserToDb(email, first, last, uid, type) async {
     await db.collection("Users").doc(uid).set({
       "firstName": first,
       "lastName": last,
       'email': email,
+      'type': type,
     });
     return true;
   }

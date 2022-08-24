@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:reasa/UI/Auth/Auth%20Components/auth_appbar.dart';
+import 'package:reasa/UI/Auth/Auth%20Components/auth_top_icon.dart';
 import 'package:reasa/UI/Dashboard/home.dart';
-import '../../View Models/Auth View Model/auth_view_model.dart';
-import '../../constants.dart';
-import '../../widgets.dart';
-import 'Auth Components/auth_top_icon.dart';
+import 'package:reasa/View%20Models/Auth%20View%20Model/auth_view_model.dart';
+import 'package:reasa/constants.dart';
+import 'package:reasa/widgets.dart';
 
-class Signup extends StatelessWidget {
-  final String email;
-  Signup({Key? key, this.email = ""}) : super(key: key) {
+class GetPassword extends StatelessWidget {
+  String email;
+  GetPassword({Key? key, this.email = ""}) : super(key: key) {
     emailController.text = email;
   }
 
   final auth = Get.find<AuthViewModel>();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController firstName = TextEditingController();
-  final TextEditingController lastName = TextEditingController();
-  final TextEditingController password = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   RxBool isSubmitting = RxBool(false);
 
   @override
@@ -33,7 +31,7 @@ class Signup extends StatelessWidget {
           children: [
             authTopIcon(
               const Icon(
-                Icons.person,
+                Icons.shield,
                 size: 35,
                 color: kclrPrimaryColor,
               ),
@@ -42,7 +40,7 @@ class Signup extends StatelessWidget {
               height: 10.h,
             ),
             poppinsText(
-              "Let's get you started!",
+              "Login with your email",
               size: 19,
               weight: FontWeight.bold,
             ),
@@ -50,7 +48,7 @@ class Signup extends StatelessWidget {
               height: 10.h,
             ),
             poppinsText(
-              "First, create your foodpanda (Ghurbat Variant) account",
+              "We'll check if you have an account",
               size: 13,
               weight: FontWeight.w300,
               color: Colors.grey[600],
@@ -58,27 +56,20 @@ class Signup extends StatelessWidget {
             SizedBox(
               height: 15.h,
             ),
-            textFieldWithTitle("Email", emailController),
-            SizedBox(
-              height: 15.h,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: textFieldWithTitle("First Name", firstName),
-                ),
-                SizedBox(
-                  width: 15.w,
-                ),
-                Expanded(
-                  child: textFieldWithTitle("Last Name", lastName),
-                ),
-              ],
+            textFieldWithTitle(
+              "Email",
+              emailController,
+              type: TextInputType.emailAddress,
+              enabled: false,
             ),
             SizedBox(
-              height: 15.h,
+              height: 20.h,
             ),
-            textFieldWithTitle("Password", password),
+            textFieldWithTitle(
+              "Password",
+              passwordController,
+              type: TextInputType.visiblePassword,
+            ),
           ],
         ),
       ),
@@ -93,25 +84,26 @@ class Signup extends StatelessWidget {
                   ),
                 )
               : longButton(
-                  title: "Signup!",
+                  title: "Continue",
                   onTap: () {
-                    isSubmitting.value = true;
-                    auth
-                        .signupEmail(
-                      email: emailController.text.trim(),
-                      password: password.text.trim(),
-                      first: firstName.text.trim(),
-                      last: lastName.text.trim(),
-                    )
-                        .then((_) {
-                      Get.offUntil(
-                        MaterialPageRoute(builder: (context) => const Home()),
-                        (route) => false,
-                      );
-                    }).onError((error, stackTrace) {
+                    if (emailController.text != "") {
+                      isSubmitting.value = true;
+                      auth
+                          .emailLogin(emailController.text.trim(),
+                              passwordController.text.trim())
+                          .then((value) {
+                        Get.offUntil(
+                            MaterialPageRoute(
+                                builder: (context) => const Home()),
+                            (route) => false);
+                        // successSnack(msg)
+                      }).onError((error, stackTrace) {
+                        errorSnack(error);
+                      });
+                    } else {
                       isSubmitting.value = false;
-                      errorSnack(error.toString());
-                    });
+                      errorSnack("Please fill all fields");
+                    }
                   },
                   color: kclrPrimaryColor,
                   textColor: Colors.white,

@@ -43,6 +43,10 @@ loggedInDrawer(auth) {
           align: TextAlign.start,
           size: 15,
         ),
+        onTap: () {
+          Get.back();
+          auth.logout();
+        },
         trailing: const Icon(Icons.chevron_right),
       )
     ],

@@ -25,9 +25,11 @@ textFieldWithTitle(
   controller, {
   type = TextInputType.text,
   Color borderColor = kclrPrimaryColor,
+  enabled = true,
 }) {
   return TextField(
     controller: controller,
+    enabled: enabled,
     decoration: InputDecoration(
       isDense: true,
       focusedBorder: OutlineInputBorder(
