@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../constants.dart';
-import '../../../widgets.dart';
+import 'package:reasa/constants.dart';
+import 'package:reasa/widgets.dart';
 
 notLoggedInDrawer(auth) {
   // "Log in / Create account"

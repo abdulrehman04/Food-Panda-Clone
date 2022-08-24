@@ -20,6 +20,14 @@ errorSnack(msg, {title = "Error"}) {
   );
 }
 
+Widget heading1(title) {
+  return poppinsText(
+    title,
+    size: 15.sp,
+    weight: FontWeight.bold,
+  );
+}
+
 textFieldWithTitle(
   label,
   controller, {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:reasa/UI/Auth/Auth%20Components/auth_appbar.dart';
-import 'package:reasa/UI/Dashboard/home.dart';
+import 'package:reasa/UI/Dashboard/Home/home.dart';
 import '../../View Models/Auth View Model/auth_view_model.dart';
 import '../../constants.dart';
 import '../../widgets.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../widgets.dart';
+import '../../../../widgets.dart';
 
 class Cuisines extends StatelessWidget {
   const Cuisines({Key? key}) : super(key: key);

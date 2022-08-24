@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:reasa/UI/Dashboard/home.dart';
+import 'package:reasa/UI/Dashboard/Home/home.dart';
 import 'package:reasa/View%20Models/Location%20View%20Model/location_view_model.dart';
 import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';

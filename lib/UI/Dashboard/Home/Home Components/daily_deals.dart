@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../widgets.dart';
+import 'package:reasa/widgets.dart';
 
 class DailyDeals extends StatelessWidget {
   const DailyDeals({Key? key}) : super(key: key);
@@ -19,11 +18,7 @@ class DailyDeals extends StatelessWidget {
             SizedBox(
               height: 5.h,
             ),
-            poppinsText(
-              "Your daily picks",
-              size: 15.sp,
-              weight: FontWeight.bold,
-            ),
+            heading1("Your daily picks"),
             SizedBox(
               height: 5.h,
             ),

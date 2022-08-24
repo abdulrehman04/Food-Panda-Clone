@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reasa/UI/Dashboard/Home%20Components/daily_deals.dart';
-import 'package:reasa/UI/Dashboard/Home%20Components/drawer.dart';
-import 'package:reasa/UI/Dashboard/Home%20Components/home_app_bar.dart';
-import 'package:reasa/UI/Dashboard/Home%20Components/main_menu.dart';
-import 'package:reasa/constants.dart';
-import 'package:reasa/widgets.dart';
-
-import 'Home Components/cuisines.dart';
+import 'package:reasa/UI/Dashboard/Home/Home%20Components/cuisines.dart';
+import 'package:reasa/UI/Dashboard/Home/Home%20Components/home_app_bar.dart';
+import 'package:reasa/UI/Dashboard/Home/Home%20Components/main_menu.dart';
+import 'Home Components/daily_deals.dart';
+import 'Home Components/drawer.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

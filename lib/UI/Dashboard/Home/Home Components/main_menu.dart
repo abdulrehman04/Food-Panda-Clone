@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:reasa/UI/Dashboard/Restaurants/restaurants.dart';
 import 'package:reasa/widgets.dart';
 
 class MainMenu extends StatelessWidget {
@@ -16,36 +18,41 @@ class MainMenu extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 7,
-                  child: Container(
-                    margin: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ListTile(
-                          title: poppinsText(
-                            "Food Delivery",
-                            weight: FontWeight.bold,
-                            size: 16,
-                            align: TextAlign.start,
+                  child: InkWell(
+                    onTap: () {
+                      Get.to(() => Restaurants());
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ListTile(
+                            title: poppinsText(
+                              "Food Delivery",
+                              weight: FontWeight.bold,
+                              size: 16,
+                              align: TextAlign.start,
+                            ),
+                            subtitle: poppinsText(
+                              "Order from your favourite restaurants and home chefs.",
+                              size: 11,
+                              align: TextAlign.start,
+                            ),
                           ),
-                          subtitle: poppinsText(
-                            "Order from your favourite restaurants and home chefs.",
-                            size: 11,
-                            align: TextAlign.start,
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Image.asset(
-                            "assets/burger_main.png",
-                            height: 85.h,
-                          ),
-                        )
-                      ],
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Image.asset(
+                              "assets/burger_main.png",
+                              height: 85.h,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
