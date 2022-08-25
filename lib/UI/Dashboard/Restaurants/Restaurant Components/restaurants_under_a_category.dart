@@ -31,7 +31,7 @@ class RestaurantsUnderACategory extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: restaurants.map<Widget>((e) {
-                  return restaurantItem(e);
+                  return restaurantItem(e, dummy: true);
                 }).toList(),
               ),
             ),

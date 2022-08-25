@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
 
-Widget restaurantItem(e, {fullSize = false}) {
+Widget restaurantItem(e, {fullSize = false, dummy = false}) {
   return SizedBox(
     width: fullSize ? double.infinity : 220.w,
     height: fullSize ? 240.h : 220.h,
@@ -19,12 +19,19 @@ Widget restaurantItem(e, {fullSize = false}) {
             width: fullSize ? double.infinity : 220.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  "assets/Restaurants/${e.image}",
-                ),
-              ),
+              image: dummy
+                  ? DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                        "assets/Restaurants/${e.image}",
+                      ),
+                    )
+                  : DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                        "${e.image}",
+                      ),
+                    ),
             ),
           ),
         ),
