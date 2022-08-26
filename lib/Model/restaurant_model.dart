@@ -12,7 +12,7 @@ class RestaurantModel {
     required this.foodType,
   });
 
-  factory RestaurantModel.fromJson(Map<String, dynamic> json) {
+  factory RestaurantModel.fromJson(json) {
     return RestaurantModel(
       name: json['name'],
       image: json['image'],

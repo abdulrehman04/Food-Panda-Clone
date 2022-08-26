@@ -20,8 +20,8 @@ class Splash extends StatelessWidget {
         future: location.initLocationService(),
         builder: ((context, snapshot) {
           if (snapshot.hasData && snapshot.data == true) {
-            splash.callToGetRestaurants();
             Future.delayed(const Duration(seconds: 1)).then((_) {
+              splash.callToGetRestaurants();
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
