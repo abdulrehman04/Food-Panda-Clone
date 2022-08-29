@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:reasa/UI/Dashboard/Restaurant%20Details/restaurant_details.dart';
 import 'package:reasa/UI/Dashboard/Restaurants/Restaurant%20Components/restaurant_app_bar.dart';
 import 'package:reasa/UI/Dashboard/Restaurants/Restaurant%20Components/restaurant_item.dart';
 import 'package:reasa/UI/Dashboard/Restaurants/Restaurant%20Components/restaurants_under_a_category.dart';
@@ -75,10 +76,15 @@ class Restaurants extends StatelessWidget {
               children: restaurants.restaurants.map((e) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: restaurantItem(
-                    e,
-                    fullSize: true,
-                    dummy: false,
+                  child: InkWell(
+                    onTap: () {
+                      Get.to(() => RestaurantDetails());
+                    },
+                    child: restaurantItem(
+                      e,
+                      fullSize: true,
+                      dummy: false,
+                    ),
                   ),
                 );
               }).toList(),

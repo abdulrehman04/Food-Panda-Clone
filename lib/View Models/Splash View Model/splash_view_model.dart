@@ -6,7 +6,6 @@ class SplashViewModel extends GetxController {
       Get.put(AllRestaurantsViewModel());
 
   callToGetRestaurants() {
-    // restaurants.getRestaurantsFromFirebase();
     restaurants.getRestaurantsInUserRadius();
   }
 }

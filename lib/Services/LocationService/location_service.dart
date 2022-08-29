@@ -40,6 +40,7 @@ class LocationService extends GetxController {
       });
       if (permission) {
         startCurrentLocationStream();
+        await Future.delayed(const Duration(seconds: 2));
         serviceStarted.complete(true);
         return serviceStarted.future;
       } else {
