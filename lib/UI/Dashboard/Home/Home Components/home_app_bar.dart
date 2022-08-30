@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:reasa/UI/Dashboard/Cart/cart.dart';
 import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
 
@@ -32,10 +34,18 @@ homeAppBar() {
         ),
       ),
     ),
-    actions: const [
-      Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Icon(Icons.shopping_cart_outlined),
+    actions: [
+      InkWell(
+        onTap: () {
+          Get.to(
+            () => const Cart(),
+            fullscreenDialog: true,
+          );
+        },
+        child: const Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Icon(Icons.shopping_cart_outlined),
+        ),
       )
     ],
   );

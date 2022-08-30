@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:reasa/UI/Dashboard/Restaurant%20Details/Restaurant%20Details%20Components/cart_bottom.dart';
 import 'package:reasa/UI/Dashboard/Restaurant%20Details/Restaurant%20Details%20Components/category_item_ui.dart';
+import 'package:reasa/View%20Models/Restaurant%20Details%20View%20Model/restaurant_details_view_model.dart';
 import 'package:reasa/constants.dart';
-import 'package:reasa/dummy_data.dart';
 import 'package:reasa/widgets.dart';
 
+import '../../../View Models/Cart View Model/cart_view_model.dart';
 import 'Restaurant Details Components/top_image_clip_rect.dart';
 
 class RestaurantDetails extends StatefulWidget {
@@ -18,37 +20,17 @@ class RestaurantDetails extends StatefulWidget {
 class _RestaurantDetailsState extends State<RestaurantDetails>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
-  // int currentIndex = 0;
-  // bool pauseAnimate = false;
 
-  List items = [
-    "Test 1",
-    "Test 2",
-    "Test 3",
-    "Test 4",
-    "Test 5",
-    "Test 6",
-    "Test 7",
-    "Test 8",
-    "Test 9",
-    "Test 10",
-    "Test 11",
-    "Test 12",
-    "Test 13",
-    "Test 14",
-    "Test 15",
-    "Test 16",
-    "Test 17",
-    "Test 18",
-    "Test 19",
-    "Test 20",
-  ];
+  RestaurantDetailsViewModel restaurantDetails =
+      Get.find<RestaurantDetailsViewModel>();
+
+  CartViewModel cart = Get.find<CartViewModel>();
 
   @override
   void initState() {
     super.initState();
     tabController = TabController(
-      length: dummyRestaurantDetails.length,
+      length: restaurantDetails.currentRestaurant.categories.length,
       vsync: this,
     );
   }
@@ -56,6 +38,13 @@ class _RestaurantDetailsState extends State<RestaurantDetails>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: Obx(() {
+        return cart.cartItems.isEmpty
+            ? Container(
+                height: 0,
+              )
+            : cartBottom(cart);
+      }),
       body: NestedScrollView(
         headerSliverBuilder: (context, isScrolled) {
           return [
@@ -70,7 +59,8 @@ class _RestaurantDetailsState extends State<RestaurantDetails>
                   indicatorColor: kclrPrimaryColor,
                   indicatorWeight: 3.0,
                   isScrollable: true,
-                  tabs: dummyRestaurantDetails.map<Widget>((e) {
+                  tabs: restaurantDetails.currentRestaurant.categories
+                      .map<Widget>((e) {
                     return Container(
                       child: poppinsText(
                         e.categoryName,
@@ -169,7 +159,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails>
         body: SizedBox(
           height: 700,
           child: ListView.builder(
-            itemCount: dummyRestaurantDetails.length,
+            itemCount: restaurantDetails.currentRestaurant.categories.length,
             itemBuilder: (context, index) {
               if (!context.debugDoingBuild) {
                 tabController.animateTo(
@@ -177,7 +167,9 @@ class _RestaurantDetailsState extends State<RestaurantDetails>
                   duration: const Duration(seconds: 0),
                 );
               }
-              return categoryItemUI(dummyRestaurantDetails[index]);
+              return categoryItemUI(
+                restaurantDetails.currentRestaurant.categories[index],
+              );
             },
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:reasa/Model/restaurant_model.dart';
 import 'package:reasa/UI/Dashboard/Restaurants/Restaurant%20Components/restaurant_item.dart';
 import 'package:reasa/constants.dart';
@@ -31,7 +32,7 @@ class RestaurantsUnderACategory extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: restaurants.map<Widget>((e) {
-                  return restaurantItem(e, dummy: true);
+                  return restaurantItem(e, dummy: false);
                 }).toList(),
               ),
             ),

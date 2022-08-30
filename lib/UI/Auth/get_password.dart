@@ -93,8 +93,7 @@ class GetPassword extends StatelessWidget {
                               passwordController.text.trim())
                           .then((value) {
                         Get.offUntil(
-                            MaterialPageRoute(
-                                builder: (context) => const Home()),
+                            MaterialPageRoute(builder: (context) => Home()),
                             (route) => false);
                         // successSnack(msg)
                       }).onError((error, stackTrace) {

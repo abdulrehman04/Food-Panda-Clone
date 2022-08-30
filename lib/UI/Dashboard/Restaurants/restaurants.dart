@@ -12,8 +12,9 @@ import 'package:reasa/widgets.dart';
 class Restaurants extends StatelessWidget {
   Restaurants({Key? key}) : super(key: key);
 
-  final AllRestaurantsViewModel restaurants =
-      Get.put(AllRestaurantsViewModel());
+  final AllRestaurantsViewModel restaurants = Get.put(
+    AllRestaurantsViewModel(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +29,11 @@ class Restaurants extends StatelessWidget {
               child: RestaurantsUnderACategory(
                 title: "Home chef Food fest week",
                 restaurants: [
-                  dummyRestaurants[0],
-                  dummyRestaurants[1],
-                  dummyRestaurants[2],
-                  dummyRestaurants[1],
-                  dummyRestaurants[0],
+                  restaurants.restaurants[0],
+                  restaurants.restaurants[1],
+                  restaurants.restaurants[2],
+                  restaurants.restaurants[1],
+                  restaurants.restaurants[0],
                 ],
               ),
             ),
@@ -41,11 +42,11 @@ class Restaurants extends StatelessWidget {
               child: RestaurantsUnderACategory(
                 title: "Pandapicks",
                 restaurants: [
-                  dummyRestaurants[1],
-                  dummyRestaurants[0],
-                  dummyRestaurants[1],
-                  dummyRestaurants[2],
-                  dummyRestaurants[0],
+                  restaurants.restaurants[1],
+                  restaurants.restaurants[0],
+                  restaurants.restaurants[1],
+                  restaurants.restaurants[2],
+                  restaurants.restaurants[0],
                 ],
               ),
             ),
@@ -54,11 +55,11 @@ class Restaurants extends StatelessWidget {
               child: RestaurantsUnderACategory(
                 title: "Panda exclusives",
                 restaurants: [
-                  dummyRestaurants[2],
-                  dummyRestaurants[1],
-                  dummyRestaurants[0],
-                  dummyRestaurants[2],
-                  dummyRestaurants[0],
+                  restaurants.restaurants[2],
+                  restaurants.restaurants[1],
+                  restaurants.restaurants[0],
+                  restaurants.restaurants[2],
+                  restaurants.restaurants[0],
                 ],
               ),
             ),
@@ -78,7 +79,7 @@ class Restaurants extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: InkWell(
                     onTap: () {
-                      Get.to(() => RestaurantDetails());
+                      restaurants.navigateToRestaurant(e);
                     },
                     child: restaurantItem(
                       e,

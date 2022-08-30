@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:reasa/UI/Dashboard/Home/Home%20Components/cuisines.dart';
 import 'package:reasa/UI/Dashboard/Home/Home%20Components/home_app_bar.dart';
 import 'package:reasa/UI/Dashboard/Home/Home%20Components/main_menu.dart';
+import '../../../View Models/Cart View Model/cart_view_model.dart';
 import 'Home Components/daily_deals.dart';
 import 'Home Components/drawer.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
+
+  CartViewModel cart = Get.put(CartViewModel());
 
   @override
   Widget build(BuildContext context) {

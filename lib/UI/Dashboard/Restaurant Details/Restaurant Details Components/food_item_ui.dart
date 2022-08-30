@@ -14,19 +14,19 @@ Widget foodItemUI(CategoryItemModel item) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               poppinsText(
-                item.name,
+                item.name.value,
                 align: TextAlign.start,
                 weight: FontWeight.w500,
               ),
               poppinsText(
-                item.desc,
+                item.desc.value,
                 color: Colors.grey,
               ),
               SizedBox(
                 height: 10.h,
               ),
               poppinsText(
-                "Rs. ${item.price.toString()}",
+                "Rs. ${item.price.value.toString()}",
                 size: 12,
                 // color: Colors.grey,
               ),
@@ -41,7 +41,7 @@ Widget foodItemUI(CategoryItemModel item) {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               image: DecorationImage(
-                image: AssetImage(item.image),
+                image: AssetImage(item.image.value),
                 fit: BoxFit.cover,
               ),
             ),

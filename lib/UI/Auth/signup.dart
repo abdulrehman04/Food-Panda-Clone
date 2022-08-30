@@ -105,7 +105,7 @@ class Signup extends StatelessWidget {
                     )
                         .then((_) {
                       Get.offUntil(
-                        MaterialPageRoute(builder: (context) => const Home()),
+                        MaterialPageRoute(builder: (context) => Home()),
                         (route) => false,
                       );
                     }).onError((error, stackTrace) {

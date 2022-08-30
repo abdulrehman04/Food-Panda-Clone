@@ -25,7 +25,7 @@ class Splash extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Home(),
+                  builder: (context) => Home(),
                 ),
               );
             });
