@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:reasa/UI/Dashboard/Cart/cart.dart';
+import 'package:reasa/UI/Dashboard/Cart/cart_stepper.dart';
 import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
 
@@ -38,7 +38,7 @@ homeAppBar() {
       InkWell(
         onTap: () {
           Get.to(
-            () => const Cart(),
+            () => CartStepper(),
             fullscreenDialog: true,
           );
         },

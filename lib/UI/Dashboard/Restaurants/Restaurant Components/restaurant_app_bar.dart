@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
 
-import '../../Cart/cart.dart';
+import '../../Cart/cart_stepper.dart';
 
 restaurantAppBar() {
   return AppBar(
@@ -45,7 +45,7 @@ restaurantAppBar() {
       InkWell(
         onTap: () {
           Get.to(
-            () => const Cart(),
+            () => CartStepper(),
             fullscreenDialog: true,
           );
         },

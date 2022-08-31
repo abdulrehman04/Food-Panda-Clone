@@ -5,7 +5,7 @@ import 'package:reasa/View%20Models/Cart%20View%20Model/cart_view_model.dart';
 import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
 
-cartAppBar() {
+checkoutAppBar() {
   CartViewModel cart = Get.find<CartViewModel>();
   return PreferredSize(
     preferredSize: Size(double.infinity, 50.h),
@@ -30,7 +30,7 @@ cartAppBar() {
             flex: 8,
             child: ListTile(
               title: poppinsText(
-                "Cart",
+                "Checkout",
                 weight: FontWeight.w500,
                 align: TextAlign.start,
               ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/state_manager.dart';
 import 'package:reasa/widgets.dart';
@@ -8,6 +9,7 @@ class LocationService extends GetxController {
   late Rx<Position> currentLocation;
   bool initialisedLocation = false;
   Completer<bool> serviceStarted = Completer();
+  Address currentAddress = Address();
 
   // LocationService() {
   // enableLocation().then((value) {
@@ -39,7 +41,7 @@ class LocationService extends GetxController {
         errorSnack(error);
       });
       if (permission) {
-        startCurrentLocationStream();
+        await startCurrentLocationStream();
         await Future.delayed(const Duration(seconds: 2));
         serviceStarted.complete(true);
         return serviceStarted.future;
@@ -102,8 +104,20 @@ class LocationService extends GetxController {
           initialisedLocation = true;
         } else {
           currentLocation.value = position;
+          getUserAddress();
         }
       }
     });
+    return true;
+  }
+
+  getUserAddress() async {
+    var addresses = await Geocoder.local.findAddressesFromCoordinates(
+      Coordinates(
+        currentLocation.value.latitude,
+        currentLocation.value.longitude,
+      ),
+    );
+    currentAddress = addresses.first;
   }
 }

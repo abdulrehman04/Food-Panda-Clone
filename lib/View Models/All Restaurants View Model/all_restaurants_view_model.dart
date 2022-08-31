@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:reasa/Model/restaurant_model.dart';
 import 'package:reasa/Services/LocationService/location_service.dart';
 import 'package:reasa/UI/Dashboard/Restaurant%20Details/restaurant_details.dart';
+import 'package:reasa/View%20Models/Cart%20View%20Model/cart_view_model.dart';
 import 'package:reasa/View%20Models/Restaurant%20Details%20View%20Model/restaurant_details_view_model.dart';
 import 'package:reasa/constants.dart';
 
@@ -10,6 +11,8 @@ class AllRestaurantsViewModel extends GetxController {
   LocationService locationService = Get.find<LocationService>();
   RestaurantDetailsViewModel restaurantDetails =
       Get.put(RestaurantDetailsViewModel());
+
+  CartViewModel cart = Get.put(CartViewModel());
 
   List<RestaurantModel> restaurants = [];
 
@@ -51,6 +54,7 @@ class AllRestaurantsViewModel extends GetxController {
 
   navigateToRestaurant(RestaurantModel e) {
     restaurantDetails.currentRestaurant = e;
+    cart.restaurant = e;
     Get.to(() => const RestaurantDetails());
   }
 }

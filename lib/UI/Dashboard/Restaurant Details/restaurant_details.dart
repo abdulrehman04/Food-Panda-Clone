@@ -33,6 +33,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails>
       length: restaurantDetails.currentRestaurant.categories.length,
       vsync: this,
     );
+    // cart.restaurant =
   }
 
   @override
