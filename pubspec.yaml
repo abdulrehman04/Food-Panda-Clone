@@ -41,7 +41,8 @@ dependencies:
   get:
   google_fonts:
   geolocator:
-  geocoder:
+  geocoding:
+  google_maps_flutter:
   font_awesome_flutter:
   google_sign_in:
   geoflutterfire:

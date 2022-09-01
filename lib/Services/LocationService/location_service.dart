@@ -1,6 +1,5 @@
 import 'dart:async';
-
-import 'package:geocoder/geocoder.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/state_manager.dart';
 import 'package:reasa/widgets.dart';
@@ -9,7 +8,7 @@ class LocationService extends GetxController {
   late Rx<Position> currentLocation;
   bool initialisedLocation = false;
   Completer<bool> serviceStarted = Completer();
-  Address currentAddress = Address();
+  late String currentAddress = "";
 
   // LocationService() {
   // enableLocation().then((value) {
@@ -41,10 +40,17 @@ class LocationService extends GetxController {
         errorSnack(error);
       });
       if (permission) {
-        await startCurrentLocationStream();
-        await Future.delayed(const Duration(seconds: 2));
-        serviceStarted.complete(true);
-        return serviceStarted.future;
+        Rx<Position> location = await getCurrentLocation();
+        if (location != null) {
+          currentLocation = location;
+          initialisedLocation = true;
+          startCurrentLocationStream();
+          serviceStarted.complete(true);
+          return serviceStarted.future;
+        } else {
+          serviceStarted.complete(false);
+          return serviceStarted.future;
+        }
       } else {
         serviceStarted.complete(false);
         return serviceStarted.future;
@@ -90,7 +96,6 @@ class LocationService extends GetxController {
     var location = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
-    initialisedLocation = true;
     return Rx(location);
   }
 
@@ -112,12 +117,15 @@ class LocationService extends GetxController {
   }
 
   getUserAddress() async {
-    var addresses = await Geocoder.local.findAddressesFromCoordinates(
-      Coordinates(
-        currentLocation.value.latitude,
-        currentLocation.value.longitude,
-      ),
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+      currentLocation.value.latitude,
+      currentLocation.value.longitude,
     );
-    currentAddress = addresses.first;
+
+    Placemark location = placemarks.first;
+
+    currentAddress =
+        "${location.name}, ${location.street}, ${location.subLocality}, ${location.locality}";
+    // print(currentAddress);
   }
 }

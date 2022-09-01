@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:reasa/Services/LocationService/location_service.dart';
 import 'package:reasa/UI/Dashboard/Cart/cart_stepper.dart';
 import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
 
 homeAppBar() {
+  LocationService location = Get.find<LocationService>();
   return AppBar(
     elevation: 3,
     backgroundColor: kclrPrimaryColor,
     title: poppinsText(
-      "Devsinc Office, Islamabad",
+      location.currentAddress,
       size: 15.sp,
       weight: FontWeight.bold,
       color: Colors.white,

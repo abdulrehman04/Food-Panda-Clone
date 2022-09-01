@@ -1,18 +1,20 @@
 import 'package:get/state_manager.dart';
 
 class CategoryItemModel {
-  RxString name, desc, image;
+  RxString name, desc, image, category;
   RxDouble price;
 
   CategoryItemModel({
+    required this.category,
     required this.name,
     required this.image,
     required this.desc,
     required this.price,
   });
 
-  factory CategoryItemModel.fromJson(json) {
+  factory CategoryItemModel.fromJson(json, category) {
     return CategoryItemModel(
+      category: RxString(category),
       name: RxString(json['name']),
       image: RxString(json['image']),
       desc: RxString(json['desc']),

@@ -14,13 +14,17 @@ class CartViewModel extends GetxController {
     return cartItems.indexWhere((p0) => p0.foodItem.name == item.name);
   }
 
-  calculateTotal() {
+  calculateCartTotal() {
     return cartItems.fold<double>(
       0,
       (previousValue, element) =>
           previousValue +
           (element.foodItem.price.value * element.quantity.value),
     );
+  }
+
+  calculateTotalOrder() {
+    return calculateCartTotal() + restaurant.deliveryFee + 4.99;
   }
 
   // updateCartStage(val) {

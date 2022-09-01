@@ -41,7 +41,7 @@ cartBottom(CartViewModel cart) {
           weight: FontWeight.w500,
         ),
         poppinsText(
-          "Rs. ${cart.calculateTotal()}",
+          "Rs. ${cart.calculateCartTotal()}",
           color: Colors.white,
           weight: FontWeight.w500,
         )

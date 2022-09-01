@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:reasa/Model/category_model.dart';
 
 class RestaurantModel {
-  String name, image, foodType;
+  String name, image, foodType, id;
   double deliveryFee, rating;
   int totalRatings;
   List<CategoryModel> categories;
 
   RestaurantModel({
     required this.name,
+    required this.id,
     required this.image,
     required this.deliveryFee,
     required this.rating,
@@ -17,8 +17,9 @@ class RestaurantModel {
     required this.categories,
   });
 
-  factory RestaurantModel.fromJson(json) {
+  factory RestaurantModel.fromJson(json, id) {
     return RestaurantModel(
+      id: id,
       name: json['name'],
       image: json['image'],
       deliveryFee: json['deliveryFee'],
@@ -26,7 +27,7 @@ class RestaurantModel {
       totalRatings: json['totalRatings'],
       foodType: json['foodType'],
       categories: json['categories']
-          .map<CategoryModel>((e) => CategoryModel.fromJson(e))
+          .map<CategoryModel>((e) => CategoryModel.fromJson(e['data'], e['id']))
           .toList(),
     );
   }

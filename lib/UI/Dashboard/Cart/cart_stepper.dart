@@ -75,7 +75,7 @@ class CartStepper extends StatelessWidget {
                 children: [
                   keyValuePairs(
                     "Total",
-                    "Rs. ${(cartVm.calculateTotal() + cartVm.restaurant.deliveryFee + 4.99).ceil()}",
+                    "Rs. ${(cartVm.calculateCartTotal() + cartVm.restaurant.deliveryFee + 4.99).ceil()}",
                     bold: true,
                   ),
                   SizedBox(

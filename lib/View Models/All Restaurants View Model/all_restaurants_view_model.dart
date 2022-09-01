@@ -19,7 +19,7 @@ class AllRestaurantsViewModel extends GetxController {
   getRestaurantsFromFirebase() {
     db.collection("Restaurants").get().then((value) {
       for (var element in value.docs) {
-        restaurants.add(RestaurantModel.fromJson(element.data()));
+        restaurants.add(RestaurantModel.fromJson(element.data(), element.id));
       }
     });
   }
@@ -44,10 +44,16 @@ class AllRestaurantsViewModel extends GetxController {
         Map restaurantData = Map.from(element.data() as Map);
         for (String e in element['categories']) {
           var data = await db.collection("Categories and Foods").doc(e).get();
-          categories.add(data.data());
+          categories.add({
+            'id': e,
+            'data': data.data(),
+          });
         }
         restaurantData['categories'] = categories;
-        restaurants.add(RestaurantModel.fromJson(restaurantData));
+        restaurants.add(RestaurantModel.fromJson(
+          restaurantData,
+          element.id,
+        ));
       }
     });
   }
