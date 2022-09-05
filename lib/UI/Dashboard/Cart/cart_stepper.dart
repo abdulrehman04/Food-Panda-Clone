@@ -13,7 +13,7 @@ import 'Cart Components/payments_panel.dart';
 class CartStepper extends StatelessWidget {
   CartStepper({Key? key}) : super(key: key);
 
-  CartViewModel cartVm = Get.find<CartViewModel>();
+  final CartViewModel cartVm = Get.find<CartViewModel>();
   final AuthViewModel auth = Get.put(AuthViewModel());
 
   @override
@@ -69,7 +69,7 @@ class CartStepper extends StatelessWidget {
               ],
             ),
             bottomSheet: Container(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               height: 105.h,
               child: Column(
                 children: [

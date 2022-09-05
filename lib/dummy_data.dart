@@ -1,6 +1,9 @@
-import 'package:reasa/Model/category_item_model.dart';
-import 'package:reasa/Model/category_model.dart';
-import 'package:reasa/Model/restaurant_model.dart';
+// List recentSearches = [
+//   'Search 1',
+//   'Search 2',
+//   'Search 3',
+//   'Search 4',
+// ];
 
 // List dummyRestaurants = [
 //   RestaurantModel(

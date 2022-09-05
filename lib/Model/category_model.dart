@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:reasa/Model/category_item_model.dart';
 
 class CategoryModel {

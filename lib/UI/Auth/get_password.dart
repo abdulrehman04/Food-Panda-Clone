@@ -9,7 +9,7 @@ import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
 
 class GetPassword extends StatelessWidget {
-  String email;
+  final String email;
   GetPassword({Key? key, this.email = ""}) : super(key: key) {
     emailController.text = email;
   }
@@ -17,7 +17,7 @@ class GetPassword extends StatelessWidget {
   final auth = Get.find<AuthViewModel>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  RxBool isSubmitting = RxBool(false);
+  final RxBool isSubmitting = RxBool(false);
 
   @override
   Widget build(BuildContext context) {

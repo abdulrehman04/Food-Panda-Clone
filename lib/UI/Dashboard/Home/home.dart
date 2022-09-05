@@ -11,7 +11,7 @@ import 'Home Components/drawer.dart';
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
 
-  CartViewModel cart = Get.put(CartViewModel());
+  final CartViewModel cart = Get.put(CartViewModel());
 
   @override
   Widget build(BuildContext context) {

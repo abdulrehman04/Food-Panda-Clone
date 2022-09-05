@@ -10,7 +10,7 @@ class CheckoutViewModel extends GetxController {
   }
 
   Future<bool> placeOrder(restaurant, total, List<CartItemModel> items) async {
-    var ref = await db.collection("Orders").add({
+    await db.collection("Orders").add({
       'from': auth.currentUser!.uid,
       'restaurant': restaurant,
       'total': total,
@@ -22,10 +22,6 @@ class CheckoutViewModel extends GetxController {
         };
       }).toList(),
     });
-    if (ref.id != null) {
-      return true;
-    } else {
-      return false;
-    }
+    return true;
   }
 }

@@ -5,7 +5,6 @@ import 'package:reasa/UI/Dashboard/Restaurants/Restaurant%20Components/restauran
 import 'package:reasa/UI/Dashboard/Restaurants/Restaurant%20Components/restaurant_item.dart';
 import 'package:reasa/UI/Dashboard/Restaurants/Restaurant%20Components/restaurants_under_a_category.dart';
 import 'package:reasa/View%20Models/All%20Restaurants%20View%20Model/all_restaurants_view_model.dart';
-import 'package:reasa/View%20Models/Cart%20View%20Model/cart_view_model.dart';
 import 'package:reasa/widgets.dart';
 
 class Restaurants extends StatelessWidget {

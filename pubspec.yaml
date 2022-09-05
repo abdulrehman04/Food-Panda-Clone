@@ -38,6 +38,8 @@ dependencies:
   firebase_auth:
   cloud_firestore:
   flutter_screenutil: ^5.5.3+2
+  flutter_starter_pack:
+  shared_preferences: ^2.0.15
   get:
   google_fonts:
   geolocator:

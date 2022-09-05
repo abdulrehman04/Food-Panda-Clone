@@ -56,20 +56,21 @@ class _RestaurantDetailsState extends State<RestaurantDetails>
               stretch: true,
               pinned: true,
               bottom: TabBar(
-                  controller: tabController,
-                  indicatorColor: kclrPrimaryColor,
-                  indicatorWeight: 3.0,
-                  isScrollable: true,
-                  tabs: restaurantDetails.currentRestaurant.categories
-                      .map<Widget>((e) {
-                    return Container(
-                      child: poppinsText(
-                        e.categoryName,
-                        size: 14.sp,
-                        weight: FontWeight.w600,
-                      ),
-                    );
-                  }).toList()),
+                controller: tabController,
+                indicatorColor: kclrPrimaryColor,
+                indicatorWeight: 3.0,
+                isScrollable: true,
+                tabs: restaurantDetails.currentRestaurant.categories
+                    .map<Widget>((e) {
+                  return Container(
+                    child: poppinsText(
+                      e.categoryName,
+                      size: 14.sp,
+                      weight: FontWeight.w600,
+                    ),
+                  );
+                }).toList(),
+              ),
               flexibleSpace: FlexibleSpaceBar(
                 background: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,10 +81,12 @@ class _RestaurantDetailsState extends State<RestaurantDetails>
                         clipper: CustomClipPath(),
                         child: Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage('assets/Deals/deal1.jpeg'),
+                              image: NetworkImage(
+                                restaurantDetails.currentRestaurant.image,
+                              ),
                             ),
                           ),
                         ),

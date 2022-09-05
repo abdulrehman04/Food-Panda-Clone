@@ -19,7 +19,7 @@ class Signup extends StatelessWidget {
   final TextEditingController firstName = TextEditingController();
   final TextEditingController lastName = TextEditingController();
   final TextEditingController password = TextEditingController();
-  RxBool isSubmitting = RxBool(false);
+  final RxBool isSubmitting = RxBool(false);
 
   @override
   Widget build(BuildContext context) {

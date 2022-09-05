@@ -8,7 +8,6 @@ import '../../../../View Models/Cart View Model/cart_view_model.dart';
 
 cartItem(CartItemModel element, editOpen) {
   CartViewModel cart = Get.find<CartViewModel>();
-  print(editOpen.value);
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 8),
     child: Stack(
@@ -18,7 +17,6 @@ cartItem(CartItemModel element, editOpen) {
             InkWell(
               onTap: () {
                 editOpen.value = !editOpen.value;
-                print(editOpen.value);
               },
               child: Container(
                 padding: const EdgeInsets.symmetric(

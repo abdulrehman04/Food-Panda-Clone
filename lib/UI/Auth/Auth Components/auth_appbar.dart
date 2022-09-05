@@ -5,7 +5,7 @@ authAppBar() {
   return AppBar(
     elevation: 0,
     backgroundColor: Colors.white,
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: kclrPrimaryColor,
     ),
   );

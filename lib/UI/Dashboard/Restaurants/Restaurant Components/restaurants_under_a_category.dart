@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:reasa/Model/restaurant_model.dart';
 import 'package:reasa/UI/Dashboard/Restaurants/Restaurant%20Components/restaurant_item.dart';
-import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
 
 class RestaurantsUnderACategory extends StatelessWidget {

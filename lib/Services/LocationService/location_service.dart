@@ -102,15 +102,12 @@ class LocationService extends GetxController {
   startCurrentLocationStream() async {
     Stream<Position> data = Geolocator.getPositionStream();
     data.listen((position) {
-      if (position != null) {
-        print("${position.latitude}, ${position.longitude}");
-        if (initialisedLocation == false) {
-          currentLocation = Rx(position);
-          initialisedLocation = true;
-        } else {
-          currentLocation.value = position;
-          getUserAddress();
-        }
+      if (initialisedLocation == false) {
+        currentLocation = Rx(position);
+        initialisedLocation = true;
+      } else {
+        currentLocation.value = position;
+        getUserAddress();
       }
     });
     return true;

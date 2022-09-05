@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:reasa/Services/LocationService/location_service.dart';
 import 'package:reasa/UI/Dashboard/Checkout/Checkout%20Components/checkout_card_top.dart';
-import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
 
 checkoutDeliveryAddressCard() {

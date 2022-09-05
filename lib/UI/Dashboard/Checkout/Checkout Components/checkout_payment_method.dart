@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reasa/UI/Dashboard/Checkout/Checkout%20Components/checkout_card_top.dart';
-import 'package:reasa/constants.dart';
 import 'package:reasa/widgets.dart';
 
 checkoutPaymentMethod() {
